@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.2.1
+
+[compare changes](https://github.com/hywax/pg-replicator/compare/v0.2.0...v0.2.1)
+
+### 🩹 Fixes
+
+- Dump file path ([2bcf056](https://github.com/hywax/pg-replicator/commit/2bcf056))
+
+### ❤️ Contributors
+
+- Hywax ([@hywax](http://github.com/hywax))
+
 ## v0.2.0
 
 
