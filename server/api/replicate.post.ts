@@ -1,3 +1,6 @@
+import { resolve } from 'node:path'
+import process from 'node:process'
+
 export default eventHandler(async () => {
   logger.start('Replicating database...')
 
@@ -5,10 +8,11 @@ export default eventHandler(async () => {
     const { dbMasterConnection, dbStageConnection } = useRuntimeConfig()
     const masterDB = parseDBConnection(dbMasterConnection)
     const stageDB = parseDBConnection(dbStageConnection)
+    const dumpFilePath = resolve(process.cwd(), 'master.dump')
 
     logger.info('Creating dump from master database')
 
-    await createDumpDBCommand(masterDB, 'master.dump')
+    await createDumpDBCommand(masterDB, dumpFilePath)
 
     logger.info('Dropping and recreating stage database')
 
@@ -17,7 +21,7 @@ export default eventHandler(async () => {
 
     logger.info('Restoring dump to stage database')
 
-    await restoreDBCommand(stageDB, 'master.dump')
+    await restoreDBCommand(stageDB, dumpFilePath)
 
     logger.success('Replication complete')
 
