@@ -19,10 +19,14 @@ RUN pnpm run build
 
 FROM $NODE
 
+RUN apk add --no-cache curl
+
 WORKDIR /app
 
 COPY --from=builder /app/.output /app
 
 EXPOSE 3000/tcp
+
+HEALTHCHECK CMD curl --fail http://localhost:3000/api/healthcheck || exit 1
 
 CMD ["/app/server/index.mjs"]
