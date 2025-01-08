@@ -7,7 +7,7 @@
     "release": "pnpm lint && pnpm typecheck && pnpm build && changelogen --release --push",
     "build": "nitro build",
     "dev": "nitro dev",
-    "prepare": "nitro prepare && husky",
+    "prepare": "nitro prepare",
     "preview": "node .output/server/index.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
