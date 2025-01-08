@@ -1,6 +1,6 @@
 ARG NODE=node:22.12.0-alpine
 
-FROM $NODE as builder
+FROM $NODE AS builder
 
 WORKDIR /app
 
@@ -8,18 +8,17 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 
-COPY package.json /app
-COPY pnpm-lock.yaml /app
+COPY . .
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
-
-COPY . /app
 
 RUN pnpm run build
 
 FROM $NODE
 
-RUN apt-get update && apt-get install -y postgresql-client curl && rm -rf /var/lib/apt/lists/*
+RUN apk add curl postgresql-client
+
+# RUN apt-get update && apt-get install -y postgresql-client curl && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
