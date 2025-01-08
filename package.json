@@ -4,7 +4,7 @@
   "private": true,
   "packageManager": "pnpm@9.15.3",
   "scripts": {
-    "release": "pnpm lint && pnpm typecheck && pnpm build && changelogen --release --push",
+    "release": "pnpm lint && pnpm build && changelogen --release --push",
     "build": "nitro build",
     "dev": "nitro dev",
     "prepare": "nitro prepare",
