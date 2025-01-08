@@ -19,7 +19,7 @@ RUN pnpm run build
 
 FROM $NODE
 
-RUN apk add --no-cache curl
+RUN apt-get update && apt-get install -y postgresql-client curl && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
