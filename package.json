@@ -13,6 +13,9 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix ."
   },
+  "dependencies": {
+    "consola": "^3.3.3"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^3.12.1",
     "changelogen": "^0.5.7",
@@ -30,8 +33,5 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
-  },
-  "dependencies": {
-    "consola": "^3.3.3"
   }
 }
