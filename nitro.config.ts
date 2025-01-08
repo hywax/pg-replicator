@@ -1,6 +1,7 @@
 export default defineNitroConfig({
   srcDir: 'server',
   runtimeConfig: {
+    apiKey: '',
     dbMasterConnection: '',
     dbStageConnection: '',
 
